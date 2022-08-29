@@ -1,11 +1,13 @@
+import { Cursos2Service } from './../cursos2.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { CursosService } from './../cursos.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Curso } from '../curso';
 import {  EMPTY, empty, Observable, pipe, Subject } from 'rxjs'
 import { catchError, take, switchMap } from 'rxjs/operators';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { CursosService } from '../cursos.service';
 
 @Component({
   selector: 'app-cursos-lista',
@@ -26,7 +28,8 @@ export class CursosListaComponent implements OnInit {
 
 
   constructor(
-    private service: CursosService,
+    // private service: CursosService,
+    private service: Cursos2Service,
     private bsModalService: BsModalService,
     private alertService: AlertModalService,
     private router: Router,
@@ -85,7 +88,7 @@ export class CursosListaComponent implements OnInit {
       },
       error => {
         this.alertService.showAlertDanger('Erro ao tendar deletar o curso')
-        
+
       }
     )
   }
